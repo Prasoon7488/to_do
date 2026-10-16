@@ -59,6 +59,14 @@ function TodoPage({ user, onLogout }) {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
 
+  const editTodo = (id, newText) => {
+    setTodos((prev) =>
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, text: newText } : todo
+      )
+    );
+  };
+
   const clearCompleted = () => {
     setTodos((prev) => prev.filter((todo) => !todo.completed));
   };
@@ -143,6 +151,7 @@ function TodoPage({ user, onLogout }) {
             todo={todo}
             onToggle={toggleTodo}
             onDelete={deleteTodo}
+            onEdit={editTodo}
           />
         ))}
       </ul>

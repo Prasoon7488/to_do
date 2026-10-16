@@ -399,6 +399,15 @@ body {
   color: #94a3b8;
 }
 
+/* Action buttons container */
+.todo-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.btn-edit,
 .btn-delete {
   background: none;
   border: none;
@@ -412,13 +421,54 @@ body {
   opacity: 0;
 }
 
+.todo-item:hover .btn-edit,
 .todo-item:hover .btn-delete {
   opacity: 1;
+}
+
+.btn-edit:hover {
+  color: #667eea;
+  background: #eef2ff;
 }
 
 .btn-delete:hover {
   color: #ef4444;
   background: #fef2f2;
+}
+
+/* Edit mode */
+.todo-item.editing {
+  box-shadow: 0 0 0 2px #667eea, 0 4px 16px rgba(102, 126, 234, 0.2);
+}
+
+.edit-wrapper {
+  flex: 1;
+}
+
+.edit-input {
+  width: 100%;
+  padding: 6px 10px;
+  border: 2px solid #667eea;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  background: #f8fafc;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.edit-input:focus {
+  border-color: #764ba2;
+  box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.15);
+  background: #fff;
+}
+
+.todo-text {
+  cursor: default;
+}
+
+.todo-item:not(.completed) .todo-text {
+  cursor: text;
 }
 
 /* Empty state */
@@ -480,6 +530,7 @@ body {
     width: 100%;
   }
 
+  .btn-edit,
   .btn-delete {
     opacity: 1;
   }
